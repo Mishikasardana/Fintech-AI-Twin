@@ -1,20 +1,25 @@
-#Fintech AI Twin
-##Introduction
+Fintech AI Twin
+Introduction
+
 Fintech AI Twin is a cutting-edge platform that empowers users to create intelligent digital twins for financial technology applications. It leverages state-of-the-art artificial intelligence and data analytics to simulate, analyze, and optimize financial processes in real-time environments. Designed for both developers and business users, the platform bridges the gap between AI technology and fintech operations, enabling smarter decisions and enhanced automation.
+
 Overview
 
 Fintech AI Twin is a full-stack platform that provides:
 
-Transparent AI decisions
+Transparent AI Decisions
 
 Users receive explainable loan decisions including SHAP-based reasoning.
 
-Verifiable receipts
+Verifiable Receipts
 
-Every AI decision generates a tamper-proof receipt anchored using
-✔ Merkle Trees
-✔ ZK-Proof (simulated)
-✔ Hash verification
+Every AI decision generates a tamper-proof receipt anchored using:
+
+Merkle Trees
+
+ZK-Proof (simulated)
+
+Hash verification
 
 Personal AI Twin
 
@@ -26,26 +31,31 @@ Users try alternate values to see how they can get approved.
 
 Governance Dashboard
 
-Admin-only area for
-✔ Audit incidents
-✔ Appeals
-✔ Model behaviour
-✔ Real-time risk overview
+Admin-only area for:
+
+Audit incidents
+
+Appeals
+
+Model behaviour
+
+Real-time risk overview
 
 Built for Banks, Fintechs & Regulators
 
-You implemented transparency, fairness, user empowerment, and auditability — exactly what upcoming regulations (EU AI Act / RBI guidelines) require.
+Implements transparency, fairness, user empowerment, and auditability — aligned with EU AI Act and RBI guidelines.
+
 Project Structure
-|──backend/
-         |──api/                         → FastAPI backend
-                  ├── main.py                  → All endpoints
-│                 ├── receipts.db              → Stored receipts
-│                 ├── action_logs.db           → Logged decisions
-│                 ├── incidents.db             → Audit incidents
-│                 ├── ...other engine modules
+backend/
+│── api/                         → FastAPI backend
+│     ├── main.py                → All endpoints
+│     ├── receipts.db            → Stored receipts
+│     ├── action_logs.db         → Logged decisions
+│     ├── incidents.db           → Audit incidents
+│     ├── ...other engine modules
 │
 ├── components/                  → React UI Components
-├── screens/                     → Frontend screens / pages
+├── screens/                     → Frontend screens/pages
 ├── backend/venv/                → Python environment (ignored)
 ├── App.tsx
 ├── index.tsx
@@ -59,15 +69,15 @@ FastAPI
 
 Python 3.10+
 
-SQLite (local demo DBs)
+SQLite
 
-SHAP (explanations)
+SHAP
 
-APScheduler (audit scheduler)
+APScheduler
 
-Custom ZK-Proof simulator
+Custom ZK-Proof Simulator
 
-Custom Merkle Tree anchoring
+Custom Merkle Tree Anchoring
 
 Frontend
 
@@ -77,21 +87,18 @@ TypeScript
 
 Tailwind (optional)
 
-Axios (API requests)
+Axios
 
 Backend Setup (FastAPI)
-Create venv
+1. Create virtual environment
 cd api
 python -m venv venv
-venv\Scripts\activate
+source venv/bin/activate        # Windows: venv\Scripts\activate
 
-nstall dependencies
+2. Install dependencies
 pip install -r requirements.txt
 
-
-(Include APScheduler, FastAPI, Uvicorn, pandas, shap, etc.)
-
-Start backend
+3. Start backend
 uvicorn api.main:app --reload --port 8000
 
 Frontend Setup (React)
@@ -99,33 +106,27 @@ npm install
 npm run dev
 
 
-Runs on http://localhost:5173.
+Runs on: http://localhost:5173
 
-API Security (Simple Admin API Key)
+API Security (Admin API Key)
 
-Add this to your .env:
+Add to .env:
 
 API_KEY=supersecretadminkey
 
 
-Send in requests:
+Include in request headers:
 
 x-api-key: supersecretadminkey
 
 
-Admin-only endpoints now protected:
+Protected admin endpoints:
 
 /audit/run
-
 /governance/overview
-
 /zk/prove
-
 /receipts/merkle
-
 /appeal/*
-
-etc.
 
 Key API Endpoints
 1. Generate Decision
@@ -143,8 +144,6 @@ POST /decision
 2. Generate Receipt
 
 POST /receipts/generate/{action_id}
-
-Returns:
 
 {
   "receipt_id": "r_1_17000000",
@@ -168,9 +167,8 @@ POST /zk/prove
 POST /what-if
 
 5. AI Twin
-
 POST /twin/{user_id}
-GET /twin/{user_id}
+GET  /twin/{user_id}
 
 6. Appeals
 
@@ -185,8 +183,6 @@ POST /appeal/{user_id}
 
 GET /governance/overview
 
-Returns:
-
 {
   "models": ["demo-v1"],
   "incidents_count": 3,
@@ -195,40 +191,54 @@ Returns:
 }
 
 Installation
-Follow these steps to set up the project locally:
-
-Clone the repository:
+Clone the repository
 git clone https://github.com/Mishikasardana/Fintech-AI-Twin.git
 cd Fintech-AI-Twin
 
-Set up a virtual environment:
+Setup virtual environment
 python3 -m venv venv
-source venv/bin/activate   # On Windows: venv\Scripts\activate
+source venv/bin/activate      # Windows: venv\Scripts\activate
 
-Install dependencies:
+Install dependencies
 pip install -r requirements.txt
 
-Open your browser and navigate to http://localhost:8000 (or the port specified in your configuration).
 
-Typical usage scenarios include:
+Open browser: http://localhost:8000
 
-Creating and managing AI twins for financial processes
-Visualizing real-time data streams
-Integrating with third-party fintech APIs
-Setting up alerts and automated responses to detected anomalies
+Usage Scenarios
+
+Creating & managing AI twins
+
+Real-time financial simulations
+
+What-if modeling for loan approvals
+
+Generating tamper-proof decision receipts
+
+Auditing AI behaviour
+
+Integrating with fintech APIs
+
+Anomaly detection & automated responses
+
 Configuration
-Fintech AI Twin uses environment variables and configuration files to adapt to different environments. Key configuration options include:
+
+Use environment variables for customization:
+
+API_KEY=supersecretadminkey
+DATABASE_URL=sqlite:///receipts.db
+LOG_LEVEL=info
 
 Contributing
-We welcome contributions from the community! To contribute:
 
-Fork the repository and create your feature branch (git checkout -b feature/YourFeature)
-Commit your changes (git commit -am 'Add new feature')
-Push to the branch (git push origin feature/YourFeature)
-Open a pull request
-Please ensure your code follows project guidelines and includes relevant tests. For major changes, open an issue first to discuss your proposal.
+Fork the repo
+
+Create a branch
+
+Commit your changes
+
+Push and open a pull request
 
 License
-This project is licensed under the MIT License. See the LICENSE file for details.
 
-Fintech AI Twin is actively maintained. For support, open an issue or reach out to the maintainers via the project's GitHub Discussions.
+This project is licensed under the MIT License.
