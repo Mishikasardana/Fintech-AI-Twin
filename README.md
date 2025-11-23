@@ -1,69 +1,80 @@
-Fintech AI Twin
-Introduction
+# Fintech AI Twin
+## Introduction
 
 Fintech AI Twin is a cutting-edge platform that empowers users to create intelligent digital twins for financial technology applications. It leverages state-of-the-art artificial intelligence and data analytics to simulate, analyze, and optimize financial processes in real-time environments. Designed for both developers and business users, the platform bridges the gap between AI technology and fintech operations, enabling smarter decisions and enhanced automation.
 
-Overview
+## Overview
 
 Fintech AI Twin is a full-stack platform that provides:
 
-Transparent AI Decisions
+### Transparent AI Decisions
 
 Users receive explainable loan decisions including SHAP-based reasoning.
 
-Verifiable Receipts
+### Verifiable Receipts
 
 Every AI decision generates a tamper-proof receipt anchored using:
 
-Merkle Trees
+### Merkle Trees
 
-ZK-Proof (simulated)
+### ZK-Proof (simulated)
 
-Hash verification
+### Hash verification
 
-Personal AI Twin
+### Personal AI Twin
 
 Users can edit their data, fix wrong assumptions, and update the system.
 
-What-If Analysis
+### What-If Analysis
 
 Users try alternate values to see how they can get approved.
 
-Governance Dashboard
+### Governance Dashboard
 
-Admin-only area for:
+## Admin-only area for:
 
-Audit incidents
+### Audit incidents
 
-Appeals
+### Appeals
 
-Model behaviour
+### Model behaviour
 
-Real-time risk overview
+### Real-time risk overview
 
-Built for Banks, Fintechs & Regulators
+### Built for Banks, Fintechs & Regulators
 
 Implements transparency, fairness, user empowerment, and auditability — aligned with EU AI Act and RBI guidelines.
 
-Project Structure
-backend/
-│── api/                         → FastAPI backend
-│     ├── main.py                → All endpoints
-│     ├── receipts.db            → Stored receipts
-│     ├── action_logs.db         → Logged decisions
-│     ├── incidents.db           → Audit incidents
-│     ├── ...other engine modules
-│
-├── components/                  → React UI Components
-├── screens/                     → Frontend screens/pages
-├── backend/venv/                → Python environment (ignored)
-├── App.tsx
-├── index.tsx
-├── package.json
-└── README.md
+## Project Structure
+### Backend
 
-Tech Stack
-Backend
+api/
+
+main.py – All endpoints
+
+receipts.db – Stored receipts
+
+action_logs.db – Logged decisions
+
+incidents.db – Audit incidents
+
+Other engine modules
+
+### Frontend
+
+components/ – React UI components
+
+screens/ – Page components
+
+App.tsx – Main application
+
+index.tsx – Entry file
+
+package.json – Project config
+
+
+## Tech Stack
+### Backend
 
 FastAPI
 
@@ -75,25 +86,25 @@ SHAP
 
 APScheduler
 
-Custom ZK-Proof Simulator
+Custom ZK-Proof simulator
 
-Custom Merkle Tree Anchoring
+Merkle Tree anchoring
 
-Frontend
+### Frontend
 
 React + Vite
 
 TypeScript
 
-Tailwind (optional)
+TailwindCSS
 
 Axios
 
-Backend Setup (FastAPI)
+### Backend Setup
 1. Create virtual environment
 cd api
 python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
+source venv/bin/activate   # Windows: venv\Scripts\activate
 
 2. Install dependencies
 pip install -r requirements.txt
@@ -101,26 +112,26 @@ pip install -r requirements.txt
 3. Start backend
 uvicorn api.main:app --reload --port 8000
 
-Frontend Setup (React)
+### Frontend Setup
 npm install
 npm run dev
 
 
-Runs on: http://localhost:5173
+Runs at: http://localhost:5173
 
-API Security (Admin API Key)
+### API Security
 
 Add to .env:
 
 API_KEY=supersecretadminkey
 
 
-Include in request headers:
+Include in header:
 
 x-api-key: supersecretadminkey
 
 
-Protected admin endpoints:
+### Admin-only endpoints:
 
 /audit/run
 /governance/overview
@@ -128,10 +139,10 @@ Protected admin endpoints:
 /receipts/merkle
 /appeal/*
 
-Key API Endpoints
-1. Generate Decision
+### Key API Endpoints
+Generate Decision
 
-POST /decision
+1. POST /decision
 
 {
   "user_id": "user123",
@@ -179,7 +190,7 @@ POST /appeal/{user_id}
   "message": "My salary has changed, decision incorrect."
 }
 
-7. Governance Dashboard
+7. Overview
 
 GET /governance/overview
 
@@ -190,55 +201,50 @@ GET /governance/overview
   "latest_receipts": 41
 }
 
-Installation
-Clone the repository
+## Installation
+### Clone
 git clone https://github.com/Mishikasardana/Fintech-AI-Twin.git
 cd Fintech-AI-Twin
 
-Setup virtual environment
+### Setup virtual environment
 python3 -m venv venv
-source venv/bin/activate      # Windows: venv\Scripts\activate
+source venv/bin/activate
 
-Install dependencies
+### Install dependencies
 pip install -r requirements.txt
 
+### Usage Scenarios
 
-Open browser: http://localhost:8000
-
-Usage Scenarios
-
-Creating & managing AI twins
+Create and manage AI twins
 
 Real-time financial simulations
 
-What-if modeling for loan approvals
+What-if modeling
 
-Generating tamper-proof decision receipts
+Audit & explainability
 
-Auditing AI behaviour
+Receipt generation
 
-Integrating with fintech APIs
-
-Anomaly detection & automated responses
+Fintech API integrations
 
 Configuration
 
-Use environment variables for customization:
+### Example .env:
 
 API_KEY=supersecretadminkey
 DATABASE_URL=sqlite:///receipts.db
 LOG_LEVEL=info
 
-Contributing
+### Contributing
 
-Fork the repo
+Fork the repository
 
-Create a branch
+Create feature branch
 
-Commit your changes
+Commit changes
 
 Push and open a pull request
 
-License
+# License
 
-This project is licensed under the MIT License.
+MIT License. See LICENSE for details.
